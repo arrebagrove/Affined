@@ -24,7 +24,10 @@ namespace AffinedLibrary
             obdDevice = new SerialPort();
             obdDevice.PortName = portName;
             obdDevice.BaudRate = baudRate;
-            obdDevice.DataReceived += ObdDeviceDataReceived;
+            // obdDevice.DataReceived += ObdDeviceDataReceived;
+            OpenSerial();
+
+            Console.Write("Initializing complete.");
         }
 
         /// <summary>
@@ -34,17 +37,32 @@ namespace AffinedLibrary
         {
             SerialPort info = (SerialPort)sender;
             string data = info.ReadExisting();
+            data = data.Replace("\r", " ");
             Console.WriteLine(data);
+        }
+
+        /// <summary>
+        /// Sends data to the vehicle
+        /// </summary>
+        /// <param name="mode">Mode type</param>
+        /// <param name="pid">PID type</param>
+        public void SendData(Mode mode, PID pid)
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(mode).ToString("X2") + Convert.ToUInt32(pid).ToString("X2") + "\r";
+            
+
+            // now lets write it out
+            obdDevice.Write(code);
         }
 
         /// <summary>
         /// Grabs a list of all com ports
         /// </summary>
         /// <returns>List of Connected com ports</returns>
-        public string[] SerialPorts()
+        public string[] GetSerialPorts()
         {
             string[] availablePorts = SerialPort.GetPortNames();
-
             return availablePorts;
         }
 
@@ -62,6 +80,137 @@ namespace AffinedLibrary
             {
                 obdDevice.Close();
             }
+        }
+
+        public int GetSpeed()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.RPM).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetRPMs()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.RPM).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetIntakeTemp()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.IntakeTemp).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetOilTemp()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.OilTemp).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetCoolentTemp()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.CoolentTemp).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetEngineLoad()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.EngineLoad).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetAirFlowRate()
+        {
+            // now lets convert these so they will send correctly
+            string code = Convert.ToUInt32(Mode.CurrentData).ToString("X2") + Convert.ToUInt32(PID.AirFlowRate).ToString("X2") + "\r";
+
+
+            // now lets write it out
+            obdDevice.Write(code);
+
+            // lets get the info back
+
+            string data = obdDevice.ReadExisting();
+            data = data.Replace("\r", " ");
+            Console.Write(data);
+
+            return 0;
+        }
+
+        public int GetMPG()
+        {
+            return 0;
         }
     }
 }

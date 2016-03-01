@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffinedLibrary", "AffinedLibrary\AffinedLibrary.csproj", "{D761C0E5-741B-497F-80F1-512E868319FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AffinedTest", "AffinedTest\AffinedTest.csproj", "{68D3B564-8EB3-4EE4-9DA4-3FAD77F77962}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D761C0E5-741B-497F-80F1-512E868319FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D761C0E5-741B-497F-80F1-512E868319FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D761C0E5-741B-497F-80F1-512E868319FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D3B564-8EB3-4EE4-9DA4-3FAD77F77962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D3B564-8EB3-4EE4-9DA4-3FAD77F77962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D3B564-8EB3-4EE4-9DA4-3FAD77F77962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D3B564-8EB3-4EE4-9DA4-3FAD77F77962}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
